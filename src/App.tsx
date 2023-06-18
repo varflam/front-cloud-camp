@@ -1,8 +1,10 @@
 import React from 'react';
+import { StartPage } from './pages/StartPage';
+import './style/style.scss';
 
 function App() {
   return (
-    <h1>Hello world</h1>
+    <StartPage/>
   );
 }
 
