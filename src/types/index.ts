@@ -3,7 +3,7 @@ export interface startForm {
   email: string | null;
 }
 
-enum gender {
+export enum gender {
   'man' = 'man',
   'woman' = 'woman',
 }

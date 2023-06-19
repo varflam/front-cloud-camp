@@ -49,6 +49,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^5.0.0",
+    "react-router-dom": "^6.13.0",
     "react-text-mask": "^5.5.0",
     "sass": "^1.63.4"
   }

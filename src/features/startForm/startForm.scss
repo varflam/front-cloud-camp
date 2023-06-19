@@ -21,7 +21,7 @@
     margin-bottom: 24px;
     &__error {
       margin-top: -15px;
-      color: $primary;
+      color: darken(red, 10%);
     }
   }
 

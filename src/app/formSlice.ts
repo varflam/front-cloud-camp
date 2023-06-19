@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { sliceState } from '../types';
+import { sliceState, gender } from '../types';
 
 
 
@@ -25,10 +25,34 @@ const formSlice = createSlice({
     },
     setEmail: (state, action: PayloadAction<string | null>) => {
       state.email = action.payload;
-    }
+    },
+    setNickname: (state, action: PayloadAction<string | null>) => {
+      state.nickname = action.payload;
+    },
+    setName: (state, action: PayloadAction<string | null>) => {
+      state.name = action.payload;
+    },
+    setSurname: (state, action: PayloadAction<string | null>) => {
+      state.surname = action.payload;
+    },
+    setSex: (state, action: PayloadAction<gender | null>) => {
+      state.surname = action.payload;
+    },
+    setAdvantages: (state, action: PayloadAction<string[] | null>) => {
+      state.advantages = action.payload;
+    },
+    setRadio: (state, action: PayloadAction<number | null>) => {
+      state.radio = action.payload;
+    },
+    setCheckbox: (state, action: PayloadAction<number[] | null>) => {
+      state.checkbox = action.payload;
+    },
+    setAbout: (state, action: PayloadAction<string | null>) => {
+      state.about = action.payload;
+    },
   }
 });
 
-export const {setEmail, setPhone} = formSlice.actions;
+export const {setEmail, setPhone, setAbout, setAdvantages, setCheckbox, setName, setNickname, setRadio, setSex, setSurname} = formSlice.actions;
 
 export default formSlice.reducer;
