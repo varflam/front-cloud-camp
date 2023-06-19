@@ -4,7 +4,7 @@
  import MaskedInput from "react-text-mask";
  import { useNavigate } from 'react-router-dom';
  import { startForm } from '../../types';
- import { useAppDispatch } from '../../app/hooks';
+ import { useAppDispatch, useAppSelector } from '../../app/hooks';
  import { setEmail, setPhone } from '../../app/formSlice';
 
  import '../../style/form.scss';
@@ -12,6 +12,7 @@
 export const StartForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const {email, phone} = useAppSelector(state => state.formSlice);
 
   const phoneNumberMask = [
     /\+/,
@@ -36,11 +37,11 @@ export const StartForm = (): JSX.Element => {
   const schema: yup.ObjectSchema<startForm> = yup.object({
     phone: yup.string().defined(),
     email: yup.string().defined().email(),
-  })
+  });
 
   const initial: startForm = {
-    phone: '',
-    email: '',
+    phone: phone || '',
+    email: email || '',
   }
 
   return (

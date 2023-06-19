@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { firstStepForm } from '../../types';
 import { setName, setSex, setSurname, setNickname } from '../../app/formSlice';
 import ProgressBar from '../progressBar/ProgressBar';
@@ -9,12 +9,13 @@ import '../../style/form.scss';
 
 const FirstStepForm = () => {
   const dispatch = useAppDispatch();
+  const {name, nickname, sex, surname} = useAppSelector(state => state.formSlice);
 
   const initial: firstStepForm = {
-    name: '',
-    surname: '',
-    sex: null,
-    nickname: '',
+    name: name || '',
+    surname: surname || '',
+    sex: sex || null,
+    nickname: nickname || '',
   }
   return (
     <div className="container">
