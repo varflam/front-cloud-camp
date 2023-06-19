@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/front-cloud-camp/static/css/main.573628b6.css",
-    "main.js": "/front-cloud-camp/static/js/main.585ff738.js",
+    "main.css": "/front-cloud-camp/static/css/main.2f70a79b.css",
+    "main.js": "/front-cloud-camp/static/js/main.df45ec50.js",
     "static/media/folder.svg": "/front-cloud-camp/static/media/folder.adb28c1ea5c60bdbecf7ece7150d6f3c.svg",
     "index.html": "/front-cloud-camp/index.html",
-    "main.573628b6.css.map": "/front-cloud-camp/static/css/main.573628b6.css.map",
-    "main.585ff738.js.map": "/front-cloud-camp/static/js/main.585ff738.js.map"
+    "main.2f70a79b.css.map": "/front-cloud-camp/static/css/main.2f70a79b.css.map",
+    "main.df45ec50.js.map": "/front-cloud-camp/static/js/main.df45ec50.js.map"
   },
   "entrypoints": [
-    "static/css/main.573628b6.css",
-    "static/js/main.585ff738.js"
+    "static/css/main.2f70a79b.css",
+    "static/js/main.df45ec50.js"
   ]
 }
