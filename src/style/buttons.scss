@@ -1,0 +1,19 @@
+.button {
+  margin-top: 24px;
+  padding: 12px 16px;
+  width: 79px;
+  height: 44px;
+  background: $button;
+  border-radius: 4px;
+  border: none;
+  color: $button-color;
+  transition: .3s;
+  cursor: pointer;
+  &:hover {
+    background: darken($button, 3%);
+  }
+  &__link {
+    color: $button-color;
+    text-decoration: none;
+  }
+}

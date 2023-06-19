@@ -18,4 +18,8 @@
     gap: 48.5%;
     padding: 0 2px;
   }
+  &__step_active {
+    color: $button;
+    font-weight: 600;
+  }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { firstStepForm } from '../../types';
+import { firstStepForm, gender } from '../../types';
 import { setName, setSex, setSurname, setNickname } from '../../app/formSlice';
 import ProgressBar from '../progressBar/ProgressBar';
 
@@ -14,14 +15,37 @@ const FirstStepForm = () => {
   const initial: firstStepForm = {
     name: name || '',
     surname: surname || '',
-    sex: sex || null,
+    sex: sex || '',
     nickname: nickname || '',
   }
+
+  const nicknameRegEx = /^[а-яА-Яa-zA-Z0-9]*$/;
+  const nameRegEx = /^[а-яА-Яa-zA-Z]*$/;
+  const schema: yup.ObjectSchema<firstStepForm> = yup.object({
+    nickname: yup
+                .string()
+                .defined()
+                .max(30, 'Nickname shouldn\'t be longer than 30 characters')
+                .matches(nicknameRegEx, 'Do not use special characters'),
+    name: yup
+              .string()
+              .defined()
+              .matches(nameRegEx, 'Do not use special characters and numbers')
+              .max(50, 'Name shouldn\'t be longer than 50 characters'),
+    surname: yup
+              .string()
+              .defined()
+              .matches(nameRegEx, 'Do not use special characters')
+              .max(50, 'Sername shouldn\'t be longer than 50 characters'),
+    sex: yup.mixed<gender>().defined(),
+  });
+
   return (
     <div className="container">
       <ProgressBar step="1"/>
       <Formik
         initialValues={initial}
+        validationSchema={schema}
         onSubmit={(values: firstStepForm) => {
           const {name, nickname, sex, surname} = values;
           dispatch(setName(name));
@@ -42,7 +66,7 @@ const FirstStepForm = () => {
           <p className="input__tip">Tip</p>
           <ErrorMessage
               className="input__error"
-              name="email"
+              name="nickname"
               component="p" />
         <label htmlFor="field-name" className="label">Name</label>
         <Field 
@@ -55,7 +79,7 @@ const FirstStepForm = () => {
           <p className="input__tip">Tip</p>
           <ErrorMessage
               className="input__error"
-              name="email"
+              name="name"
               component="p" />
         <label htmlFor="field-sername" className="label">Sername</label>
         <Field 
@@ -68,20 +92,19 @@ const FirstStepForm = () => {
           <p className="input__tip">Tip</p>
           <ErrorMessage
               className="input__error"
-              name="email"
+              name="surname"
               component="p" />
         <label htmlFor="field-sex" className="label">Sex</label>
         <Field as="select"
           className="input"
-          placeholder="Placeholder"
           name="sex"
           id="field-sex"
-          value="man"
           >
-            <option value="man">man</option>
-            <option value="woman">woman</option>
+            <option id="field-sex-option-man" value="man">man</option>
+            <option id="field-sex-option-woman" value="woman">woman</option>
           </Field>
           <p className="input__tip">Tip</p>
+          <button className='button' type="submit">go</button>
         </Form>
       </Formik>
     </div>

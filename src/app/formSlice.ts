@@ -9,7 +9,7 @@ const initialState: sliceState = {
   surname: null,
   phone: null,
   email: null,
-  sex: null,
+  sex: '',
   advantages: null,
   radio: null,
   checkbox: null,
@@ -35,8 +35,8 @@ const formSlice = createSlice({
     setSurname: (state, action: PayloadAction<string | null>) => {
       state.surname = action.payload;
     },
-    setSex: (state, action: PayloadAction<gender | null>) => {
-      state.surname = action.payload;
+    setSex: (state, action: PayloadAction<gender | ''>) => {
+      state.sex = action.payload;
     },
     setAdvantages: (state, action: PayloadAction<string[] | null>) => {
       state.advantages = action.payload;

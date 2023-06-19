@@ -34,9 +34,11 @@ export const StartForm = (): JSX.Element => {
     /\d/,
   ];
 
+  const emailRegEx = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
   const schema: yup.ObjectSchema<startForm> = yup.object({
     phone: yup.string().defined(),
-    email: yup.string().defined().email(),
+    email: yup.string().defined().matches(emailRegEx, 'Please enter a valid email'),
   });
 
   const initial: startForm = {

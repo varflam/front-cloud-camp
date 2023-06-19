@@ -3,16 +3,13 @@ export interface startForm {
   email: string | null;
 }
 
-export enum gender {
-  'man' = 'man',
-  'woman' = 'woman',
-}
+export type gender = "man" | "woman";
 
 export interface firstStepForm {
   nickname: string | null;
   name: string | null;
   surname: string | null;
-  sex: gender | null;
+  sex: gender | '';
 }
 
 export interface sliceState {
@@ -21,7 +18,7 @@ export interface sliceState {
   surname: string | null;
   phone: string | null;
   email: string | null;
-  sex: gender | null;
+  sex: gender | '';
   advantages: string[] | null;
   radio: number | null;
   checkbox: number[] | null;

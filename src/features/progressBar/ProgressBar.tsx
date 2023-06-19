@@ -20,7 +20,7 @@ const ProgressBar = (props: steps) => {
             <img src={gray} alt="" className="progress__icon-gray" />
           </div>
         <div className="progress__steps">
-          <span>1</span>
+          <span className="progress__step_active">1</span>
           <span>2</span>
           <span>3</span>
         </div>
