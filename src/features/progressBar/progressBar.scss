@@ -1,0 +1,21 @@
+@import '../../style/variables.scss';
+
+.progress {
+  margin-bottom: 67px;
+  &__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  &__gray {
+    width: 48.5%;
+    height: 5px;
+    background: $gray;
+  }
+  &__steps {
+    display: flex;
+    gap: 48.5%;
+    padding: 0 2px;
+  }
+}

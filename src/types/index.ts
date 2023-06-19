@@ -8,6 +8,13 @@ export enum gender {
   'woman' = 'woman',
 }
 
+export interface firstStepForm {
+  nickname: string | null;
+  name: string | null;
+  surname: string | null;
+  sex: gender | null;
+}
+
 export interface sliceState {
   nickname: string | null;
   name: string | null;
@@ -20,3 +27,7 @@ export interface sliceState {
   checkbox: number[] | null;
   about: string | null;
 }
+
+export type steps = {
+  step: "1" | "2" | "3";
+};

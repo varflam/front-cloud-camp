@@ -7,7 +7,7 @@
  import { useAppDispatch } from '../../app/hooks';
  import { setEmail, setPhone } from '../../app/formSlice';
 
- import './startForm.scss';
+ import '../../style/form.scss';
 
 export const StartForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -55,7 +55,7 @@ export const StartForm = (): JSX.Element => {
         navigate('/front-cloud-camp/create');
       }}
       >
-        <Form className="start-form">
+        <Form className="form">
           <label htmlFor="phone" className="label">Номер телефона</label>
           <Field
               name="phone"
