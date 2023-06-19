@@ -2,6 +2,7 @@
  import { Formik, Form, Field, ErrorMessage } from 'formik';
  import * as yup from 'yup';
  import MaskedInput from "react-text-mask";
+ import { useNavigate } from 'react-router-dom';
  import { startForm } from '../../types';
  import { useAppDispatch } from '../../app/hooks';
  import { setEmail, setPhone } from '../../app/formSlice';
@@ -10,8 +11,10 @@
 
 export const StartForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const phoneNumberMask = [
+    /\+/,
     "7",
     "(",
     /\d/,
@@ -49,6 +52,7 @@ export const StartForm = (): JSX.Element => {
         const {email, phone} = value;
         dispatch(setEmail(email));
         dispatch(setPhone(phone));
+        navigate('/front-cloud-camp/create');
       }}
       >
         <Form className="start-form">

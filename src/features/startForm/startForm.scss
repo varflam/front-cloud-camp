@@ -39,5 +39,9 @@
     &:hover {
       background: darken($button, 3%);
     }
+    &__link {
+      color: $button-color;
+      text-decoration: none;
+    }
   }
 }
