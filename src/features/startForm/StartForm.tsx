@@ -1,6 +1,7 @@
  import * as React from 'react';
  import { Formik, Form, Field } from 'formik';
  import * as yup from 'yup';
+ import MaskedInput from "react-text-mask";
  import { startForm } from '../../types';
  import { useAppDispatch } from '../../app/hooks';
  import { setEmail, setPhone } from '../../app/formSlice';
@@ -10,10 +11,27 @@
 export const StartForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+  const phoneNumberMask = [
+    "7",
+    "(",
+    /\d/,
+    /\d/,
+    /\d/,
+    ")",
+    " ",
+    /\d/,
+    /\d/,
+    /\d/,
+    "-",
+    /\d/,
+    /\d/,
+    "-",
+    /\d/,
+    /\d/,
+  ];
 
   const schema: yup.ObjectSchema<startForm> = yup.object({
-    phone: yup.string().defined().matches(phoneRegExp),
+    phone: yup.string().defined(),
     email: yup.string().defined().email(),
   })
 
@@ -36,11 +54,17 @@ export const StartForm = (): JSX.Element => {
         <Form className="start-form">
           <label htmlFor="phone" className="label">Номер телефона</label>
           <Field
-            type="text"
-            className="input"
-            id="phone"
-            name="phone"
-            placeholder="+7 999 999-99-99"
+              name="phone"
+              render={({ field }: any) => (
+                <MaskedInput
+                  {...field}
+                  mask={phoneNumberMask}
+                  id="phone"
+                  placeholder="Enter your phone number"
+                  type="text"
+                  className="input"
+                />
+              )}
             />
           <label htmlFor="email" className="label">Email</label>
           <Field
