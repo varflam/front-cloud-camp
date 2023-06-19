@@ -1,4 +1,3 @@
-@import url(//db.onlinewebfonts.com/c/c68e21ad1a10803b1ef491fd0392b067?family=SB+Sans+Text);
 @import '../style/variables.scss';
 
 .user {
@@ -10,13 +9,13 @@
     position: absolute;
     content: '';
     bottom: -24px;
-    left: 0;
+    left: 2.7%;
     width: 100%;
     height: 1px;
     background: rgba(0, 0, 0, 0.08);
   }
   &__avatar {
-    font-family: 'SB Sans Text';
+    font-family: 'SB Sans Text', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -28,7 +27,7 @@
   }
   
   &__name {
-    font-family: 'SB Sans Interface';
+    font-family: 'SB Sans Interface', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;

@@ -1,5 +1,5 @@
  import * as React from 'react';
- import { Formik, Form, Field } from 'formik';
+ import { Formik, Form, Field, ErrorMessage } from 'formik';
  import * as yup from 'yup';
  import MaskedInput from "react-text-mask";
  import { startForm } from '../../types';
@@ -66,6 +66,10 @@ export const StartForm = (): JSX.Element => {
                 />
               )}
             />
+            <ErrorMessage
+              className="input__error"
+              name="phone"
+              component="p" />
           <label htmlFor="email" className="label">Email</label>
           <Field
             type="text"
@@ -74,6 +78,10 @@ export const StartForm = (): JSX.Element => {
             name="email"
             placeholder="tim.jennings@example.com"
             />
+            <ErrorMessage
+              className="input__error"
+              name="email"
+              component="p" />
           <button 
           className="button"
           type="submit"
