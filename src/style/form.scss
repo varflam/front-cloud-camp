@@ -15,10 +15,21 @@
     padding-left: 12px;
     width: 400px;
     height: 44px;
-    background: rgba(0, 0, 0, 0.04);  
+    background: none;  
     border: 1px solid rgba(0, 0, 0, 0.16);
     border-radius: 4px;
     margin-bottom: 24px;
+    &_start {
+      background: rgba(0, 0, 0, 0.04); 
+    }
+    &_multiple {
+      margin-bottom: 8px;
+    }
+    &_box {
+      width: 16px;
+      height: 16px;
+      margin-bottom: 8px;
+    }
     &__error {
       margin-top: -15px;
       color: darken(red, 10%);
@@ -33,6 +44,48 @@
       margin-top: -16px;
       margin-bottom: 24px;
       cursor: pointer;
+    }
+  }
+
+  &__group {
+    margin-bottom: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    &_adv {
+      margin-bottom: 8px;
+    }
+    .label,
+    .input {
+      margin-bottom: 0;
+    }
+  }
+
+  &__plus {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid $button;
+    border-radius: 4px;
+    background: url('../assets/plus_icon.svg') no-repeat center center;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+      background: url('../assets/plus_icon.svg') no-repeat center center,
+                  darken($button-color, 3%);
+    }
+  }
+
+  &__delete-img {
+    width: 20px;
+    height: 19px;
+    background: url('../assets/delete_icon.svg') no-repeat center center;
+    border: none;
+    transition: .3s;
+    &:hover {
+      transform: scale(1.2);
     }
   }
 }

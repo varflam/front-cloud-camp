@@ -12,6 +12,12 @@ export interface firstStepForm {
   sex: gender | '';
 }
 
+export interface secondStepForm {
+  advantages: string[] | null;
+  radio: number | null;
+  checkbox: number[] | null;
+}
+
 export interface sliceState {
   nickname: string | null;
   name: string | null;

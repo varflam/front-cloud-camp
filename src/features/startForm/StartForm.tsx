@@ -69,7 +69,7 @@ export const StartForm = (): JSX.Element => {
                   id="phone"
                   placeholder="Enter your phone number"
                   type="text"
-                  className="input"
+                  className="input input_start"
                 />
               )}
             />
@@ -80,7 +80,7 @@ export const StartForm = (): JSX.Element => {
           <label htmlFor="email" className="label">Email</label>
           <Field
             type="text"
-            className="input"
+            className="input input_start"
             id="email"
             name="email"
             placeholder="tim.jennings@example.com"

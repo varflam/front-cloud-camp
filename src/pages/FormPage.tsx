@@ -24,7 +24,8 @@ export const FormPage = () => {
 
   return (
     <div className='container'>
-      {renderForm()}
+      {/* {renderForm()} */}
+      <SecondStepForm/>
     </div>
   );
 };

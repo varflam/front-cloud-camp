@@ -8,7 +8,7 @@ const Buttons = () => {
   const dispatch = useAppDispatch();
 
   const onPrevClick = () => {
-    dispatch(goBack);
+    dispatch(goBack());
   }
 
   return (
