@@ -15,8 +15,9 @@ export const StartForm = (): JSX.Element => {
   const {email, phone} = useAppSelector(state => state.formSlice);
 
   const phoneNumberMask = [
-    /\+/,
+    "+",
     "7",
+    ' ',
     "(",
     /\d/,
     /\d/,

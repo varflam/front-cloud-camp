@@ -10,11 +10,11 @@ const initialState: sliceState = {
   phone: null,
   email: null,
   sex: '',
-  advantages: null,
-  radio: null,
-  checkbox: null,
+  advantages: [],
+  radio: 1,
+  checkbox: [],
   about: null,
-}
+};
 
 const formSlice = createSlice({
   name: 'form',
@@ -38,13 +38,13 @@ const formSlice = createSlice({
     setSex: (state, action: PayloadAction<gender | ''>) => {
       state.sex = action.payload;
     },
-    setAdvantages: (state, action: PayloadAction<string[] | null>) => {
+    setAdvantages: (state, action: PayloadAction<string[]>) => {
       state.advantages = action.payload;
     },
     setRadio: (state, action: PayloadAction<number | null>) => {
       state.radio = action.payload;
     },
-    setCheckbox: (state, action: PayloadAction<number[] | null>) => {
+    setCheckbox: (state, action: PayloadAction<number[]>) => {
       state.checkbox = action.payload;
     },
     setAbout: (state, action: PayloadAction<string | null>) => {

@@ -13,7 +13,6 @@ export interface firstStepForm {
 }
 
 export interface secondStepForm {
-  advantages: string[] | null;
   radio: number | null;
   checkbox: number[] | null;
 }
@@ -25,9 +24,9 @@ export interface sliceState {
   phone: string | null;
   email: string | null;
   sex: gender | '';
-  advantages: string[] | null;
+  advantages: string[];
   radio: number | null;
-  checkbox: number[] | null;
+  checkbox: number[];
   about: string | null;
 }
 
