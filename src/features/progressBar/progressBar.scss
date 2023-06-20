@@ -8,10 +8,20 @@
     align-items: center;
     margin-bottom: 12px;
   }
-  &__gray {
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+  &__line {
     width: 48.5%;
     height: 8px;
     background: rgba($color: $gray, $alpha: 0.4);
+    &_gray {
+      background: rgba($color: $gray, $alpha: 0.4);
+    }
+    &_purple {
+      background: $button;
+    }
   }
   &__steps {
     display: flex;
