@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/front-cloud-camp/static/css/main.d4e32de4.css",
-    "main.js": "/front-cloud-camp/static/js/main.c5665d7c.js",
+    "main.css": "/front-cloud-camp/static/css/main.4a617c64.css",
+    "main.js": "/front-cloud-camp/static/js/main.5f5774f3.js",
     "static/media/SBSansInterface.ttf": "/front-cloud-camp/static/media/SBSansInterface.979c0df052de84707146.ttf",
     "static/media/SBSansText.ttf": "/front-cloud-camp/static/media/SBSansText.591e1eb7f797fbfb855c.ttf",
     "static/media/SBSansInterface.woff": "/front-cloud-camp/static/media/SBSansInterface.5d5bc6c6fac844cbcf12.woff",
@@ -9,15 +9,17 @@
     "static/media/SBSansInterface.woff2": "/front-cloud-camp/static/media/SBSansInterface.e077dbf19683a46d9c45.woff2",
     "static/media/SBSansText.woff2": "/front-cloud-camp/static/media/SBSansText.68d50c3ac2334819f5b6.woff2",
     "static/media/purple_dot.svg": "/front-cloud-camp/static/media/purple_dot.18ddee870ce9d32f4066bfc18f0d0598.svg",
+    "static/media/delete_icon.svg": "/front-cloud-camp/static/media/delete_icon.bbb223817c2516707552.svg",
     "static/media/folder.svg": "/front-cloud-camp/static/media/folder.adb28c1ea5c60bdbecf7ece7150d6f3c.svg",
     "index.html": "/front-cloud-camp/index.html",
     "static/media/checked_dot.svg": "/front-cloud-camp/static/media/checked_dot.34f9497c3506b2edb53deb52e997e713.svg",
+    "static/media/plus_icon.svg": "/front-cloud-camp/static/media/plus_icon.3ad12e8cba6b37ee7a5b.svg",
     "static/media/gray_dot.svg": "/front-cloud-camp/static/media/gray_dot.f2778157a7362c65deb94258f3ac65f9.svg",
-    "main.d4e32de4.css.map": "/front-cloud-camp/static/css/main.d4e32de4.css.map",
-    "main.c5665d7c.js.map": "/front-cloud-camp/static/js/main.c5665d7c.js.map"
+    "main.4a617c64.css.map": "/front-cloud-camp/static/css/main.4a617c64.css.map",
+    "main.5f5774f3.js.map": "/front-cloud-camp/static/js/main.5f5774f3.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4e32de4.css",
-    "static/js/main.c5665d7c.js"
+    "static/css/main.4a617c64.css",
+    "static/js/main.5f5774f3.js"
   ]
 }
