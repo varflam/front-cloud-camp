@@ -15,7 +15,7 @@ const FirstStepForm = () => {
   const initial: firstStepForm = {
     name: name || '',
     surname: surname || '',
-    sex: sex || '',
+    sex: sex || 'man',
     nickname: nickname || '',
   }
 
@@ -41,7 +41,7 @@ const FirstStepForm = () => {
   });
 
   return (
-    <div className="container">
+    <>
       <ProgressBar step="1"/>
       <Formik
         initialValues={initial}
@@ -54,7 +54,7 @@ const FirstStepForm = () => {
           dispatch(setSurname(surname));
         }}
         >
-        <Form className="form form_step">
+        <Form className="form form_step" id="first-step">
         <label htmlFor="field-nickname" className="label">Nickname</label>
         <Field 
           type="text" 
@@ -104,10 +104,9 @@ const FirstStepForm = () => {
             <option id="field-sex-option-woman" value="woman">woman</option>
           </Field>
           <p className="input__tip">Tip</p>
-          <button className='button' type="submit">go</button>
         </Form>
       </Formik>
-    </div>
+    </>
   );
 };
 
