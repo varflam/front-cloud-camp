@@ -4,14 +4,15 @@ import * as yup from 'yup';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { firstStepForm, gender } from '../../types';
 import { setName, setSex, setSurname, setNickname } from '../../app/formSlice';
+import { goForward } from '../../app/stepSlice';
 import ProgressBar from '../progressBar/ProgressBar';
+import Buttons from '../Buttons/Buttons';
 
 import '../../style/form.scss';
 
 const FirstStepForm = () => {
   const dispatch = useAppDispatch();
   const {name, nickname, sex, surname} = useAppSelector(state => state.formSlice);
-
   const initial: firstStepForm = {
     name: name || '',
     surname: surname || '',
@@ -42,7 +43,7 @@ const FirstStepForm = () => {
 
   return (
     <>
-      <ProgressBar step="1"/>
+      <ProgressBar step={1}/>
       <Formik
         initialValues={initial}
         validationSchema={schema}
@@ -52,6 +53,7 @@ const FirstStepForm = () => {
           dispatch(setNickname(nickname));
           dispatch(setSex(sex));
           dispatch(setSurname(surname));
+          dispatch(goForward());
         }}
         >
         <Form className="form form_step" id="first-step">
@@ -104,6 +106,7 @@ const FirstStepForm = () => {
             <option id="field-sex-option-woman" value="woman">woman</option>
           </Field>
           <p className="input__tip">Tip</p>
+          <Buttons/>
         </Form>
       </Formik>
     </>

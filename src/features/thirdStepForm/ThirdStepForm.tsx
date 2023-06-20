@@ -4,7 +4,7 @@ import ProgressBar from '../progressBar/ProgressBar';
 const ThirdStepForm = () => {
   return (
     <>
-      <ProgressBar step={"3"}/>
+      <ProgressBar step={3}/>
     </>
   );
 };

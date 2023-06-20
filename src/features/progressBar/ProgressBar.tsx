@@ -11,11 +11,11 @@ import checkedDot from '../../assets/checked_dot.svg';
 const ProgressBar = (props: steps) => {
   const {step} = props;
   switch(step) {
-    case "1":
+    case 1:
       return <Step1/>
-    case "2":
+    case 2:
       return <Step2/>
-    case "3":
+    case 3:
       return <Step3/>
     default:
       return <Step1/>

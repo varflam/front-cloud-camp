@@ -26,5 +26,5 @@ export interface sliceState {
 }
 
 export type steps = {
-  step: "1" | "2" | "3";
+  step: number;
 };
