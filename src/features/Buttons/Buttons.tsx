@@ -1,16 +1,11 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { goBack, goForward } from '../../app/stepSlice';
+import { goBack } from '../../app/stepSlice';
 import { Link } from 'react-router-dom';
 
 const Buttons = () => {
   const {step} = useAppSelector(state => state.stepSlice);
   const dispatch = useAppDispatch();
-
-  const onNextClick = () => {
-    dispatch(goForward);
-    console.log(step);
-  }
 
   const onPrevClick = () => {
     dispatch(goBack);
@@ -29,7 +24,6 @@ const Buttons = () => {
         id="button-next" 
         className='button' 
         type="submit"
-        // form={setFormSubmit()}
         >
         Далее
       </button>
