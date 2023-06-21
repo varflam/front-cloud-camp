@@ -100,3 +100,17 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .form {
+    .input, .input_start {
+      width: 250px;
+      &_box {
+        width: 16px;
+      }
+    .input_textarea {
+      width: calc(100% - 24px);
+    }
+    }
+  }
+}

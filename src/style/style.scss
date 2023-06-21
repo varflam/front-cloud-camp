@@ -10,3 +10,9 @@
   max-width: 900px;
   margin: auto;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90vw;
+  }
+}

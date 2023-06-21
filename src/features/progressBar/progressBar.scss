@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 12px;
+    width: 100%;
   }
   &__icon {
     width: 16px;
@@ -25,7 +26,8 @@
   }
   &__steps {
     display: flex;
-    gap: 48.5%;
+    width: calc(100% - 4px);
+    justify-content: space-between;
     padding: 0 2px;
   }
   &__step_active {

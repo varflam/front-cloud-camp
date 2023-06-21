@@ -45,3 +45,11 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .overlay {
+    .modal {
+      width: 90vw;
+    }
+  }
+}
