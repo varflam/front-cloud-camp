@@ -11,6 +11,14 @@ const Buttons = () => {
     dispatch(goBack());
   }
 
+  const classNames = () => {
+    if (step === 3) {
+      return 'button button_big'
+    } else {
+      return 'button'
+    }
+  }
+
   return (
     <div className="buttons">
       <button
@@ -22,10 +30,10 @@ const Buttons = () => {
       </button>
       <button
         id="button-next" 
-        className='button' 
+        className={classNames()} 
         type="submit"
         >
-        Далее
+        {step === 3 ? 'Отправить' : 'Далее'}
       </button>
     </div>
   );

@@ -28,4 +28,8 @@
       background: darken($button-color, 3%);
     }
   }
+
+  &_big {
+    width: 103px;
+  }
 }

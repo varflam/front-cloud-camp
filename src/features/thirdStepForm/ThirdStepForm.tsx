@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import ProgressBar from '../progressBar/ProgressBar';
 import { thirdStepForm } from '../../types';
 import { setAbout } from '../../app/formSlice';
+import { useSubmitForm } from '../../hooks/useSubmitForm';
 import Buttons from '../Buttons/Buttons';
 
 const ThirdStepForm = () => {
   const [symbolCounter, setSymbolCounter] = useState(0);
   const dispatch = useAppDispatch();
+  const {about} = useAppSelector(state => state.formSlice);
+  const {onSubmitForm} = useSubmitForm();
 
   const initialValues: thirdStepForm = {
-    about: '',
+    about: about || '',
   }
 
   const validationSchema: yup.ObjectSchema<thirdStepForm> = yup.object({
@@ -27,6 +30,7 @@ const ThirdStepForm = () => {
         validationSchema={validationSchema}
         onSubmit={({about}) => {
           dispatch(setAbout(about));
+          onSubmitForm();
         }}
         >
           {
