@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/front-cloud-camp/static/css/main.ad8aa417.css",
+    "main.css": "/front-cloud-camp/static/css/main.13ceeaf9.css",
     "main.js": "/front-cloud-camp/static/js/main.6e63e1f8.js",
     "static/media/SBSansInterface.ttf": "/front-cloud-camp/static/media/SBSansInterface.979c0df052de84707146.ttf",
     "static/media/SBSansText.ttf": "/front-cloud-camp/static/media/SBSansText.591e1eb7f797fbfb855c.ttf",
@@ -17,11 +17,11 @@
     "static/media/checked_dot.svg": "/front-cloud-camp/static/media/checked_dot.34f9497c3506b2edb53deb52e997e713.svg",
     "static/media/plus_icon.svg": "/front-cloud-camp/static/media/plus_icon.3ad12e8cba6b37ee7a5b.svg",
     "static/media/gray_dot.svg": "/front-cloud-camp/static/media/gray_dot.f2778157a7362c65deb94258f3ac65f9.svg",
-    "main.ad8aa417.css.map": "/front-cloud-camp/static/css/main.ad8aa417.css.map",
+    "main.13ceeaf9.css.map": "/front-cloud-camp/static/css/main.13ceeaf9.css.map",
     "main.6e63e1f8.js.map": "/front-cloud-camp/static/js/main.6e63e1f8.js.map"
   },
   "entrypoints": [
-    "static/css/main.ad8aa417.css",
+    "static/css/main.13ceeaf9.css",
     "static/js/main.6e63e1f8.js"
   ]
 }
