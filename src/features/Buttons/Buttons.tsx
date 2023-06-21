@@ -11,12 +11,12 @@ const Buttons = () => {
     dispatch(goBack());
   }
 
-  const classNames = () => {
+  const renderButton = () => {
     if (step === 3) {
-      return 'button button_big'
-    } else {
-      return 'button'
+      return <SendButton/>
     }
+    
+    return <NextButton/>
   }
 
   return (
@@ -28,15 +28,33 @@ const Buttons = () => {
         >
           {step === 1 ? <Link className='button__link' to="/front-cloud-camp">Назад</Link> : 'Назад'}
       </button>
-      <button
-        id="button-next" 
-        className={classNames()} 
-        type="submit"
-        >
-        {step === 3 ? 'Отправить' : 'Далее'}
-      </button>
+      {renderButton()}
     </div>
   );
 };
+
+const NextButton = () => {
+  return(
+    <button
+      id="button-next" 
+      className="button"
+      type="submit"
+      >
+      Далее
+    </button>
+  )
+}
+
+const SendButton = () => {
+  return(
+    <button
+      id="button-send" 
+      className="button button_big"
+      type="submit"
+      >
+      Отправить
+    </button>
+  )
+}
 
 export default Buttons;

@@ -6,8 +6,7 @@ export const useSubmitForm = () => {
 
   const onSubmitForm = () => {
     const {formSlice} = store.getState();
-    sendForm(formSlice)
-      .then(res => console.log(res));
+    return sendForm(formSlice);
   }
 
   return {onSubmitForm}

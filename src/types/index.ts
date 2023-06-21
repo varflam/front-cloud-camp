@@ -37,3 +37,8 @@ export interface sliceState {
 export type steps = {
   step: number;
 };
+
+export interface modals {
+  isVisible: boolean;
+  isSuccessed: boolean;
+}

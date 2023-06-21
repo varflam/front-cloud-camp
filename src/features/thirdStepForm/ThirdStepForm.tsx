@@ -7,9 +7,12 @@ import { thirdStepForm } from '../../types';
 import { setAbout } from '../../app/formSlice';
 import { useSubmitForm } from '../../hooks/useSubmitForm';
 import Buttons from '../Buttons/Buttons';
+import Modals from '../Modals/Modals';
 
 const ThirdStepForm = () => {
   const [symbolCounter, setSymbolCounter] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isSuccessed, setIsSuccessed] = useState(false);
   const dispatch = useAppDispatch();
   const {about} = useAppSelector(state => state.formSlice);
   const {onSubmitForm} = useSubmitForm();
@@ -30,7 +33,13 @@ const ThirdStepForm = () => {
         validationSchema={validationSchema}
         onSubmit={({about}) => {
           dispatch(setAbout(about));
-          onSubmitForm();
+          onSubmitForm()
+            .then((res: any) => {
+              setIsVisible(true);
+              if (res.data.status === 'success') {
+                setIsSuccessed(true);
+              }
+            });
         }}
         >
           {
@@ -66,6 +75,7 @@ const ThirdStepForm = () => {
             }
           }
       </Formik>
+      <Modals isVisible={isVisible} isSuccessed={isSuccessed}/>
     </>
   );
 };

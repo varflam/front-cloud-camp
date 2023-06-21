@@ -18,10 +18,13 @@ const stepSlice = createSlice({
       if (state.step > 1) {
         state.step -= 1;
       }
+    },
+    startAgain: (state) => {
+      state.step = 1;
     }
   }
 });
 
-export const {goBack, goForward} = stepSlice.actions;
+export const {goBack, goForward, startAgain} = stepSlice.actions;
 
 export default stepSlice.reducer;
