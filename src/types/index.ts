@@ -17,6 +17,10 @@ export interface secondStepForm {
   checkbox: number[] | null;
 }
 
+export interface thirdStepForm {
+  about: string;
+}
+
 export interface sliceState {
   nickname: string | null;
   name: string | null;

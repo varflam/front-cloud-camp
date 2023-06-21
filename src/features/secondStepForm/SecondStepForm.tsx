@@ -14,15 +14,15 @@ const SecondStepForm = () => {
   const {advantages, radio, checkbox} = useAppSelector(state => state.formSlice);
   const [advantagesState, setAdvantagesState] = useState([...advantages]);
 
-  const schema = yup.object().shape({
-    radio: yup.number().defined('Please, choose a checkbox'),
-    checkbox: yup.array().min(1, 'Please, choose a checkbox')
+  const schema = yup.object({
+    checkbox: yup.array().min(1, 'Please, choose a checkbox'),
+    radio: yup.string().required('Please, choose a radio').matches(/[123]/),
   });
 
   const checkboxesID: string[] = ['field-checkbox-group-option-1', 'field-checkbox-group-option-2', 'field-checkbox-group-option-3'];
   const radiosID: string[] = ['field-radio-group-option-1', 'field-radio-group-option-2', 'field-radio-group-option-3'];
 
-  const initialAdvantages: {[index: string]: string} = {
+  const advantagesValues: {[index: string]: string} = {
     'advantages-1': '',
     'advantages-2': '',
     'advantages-3': '',
@@ -31,7 +31,7 @@ const SecondStepForm = () => {
   const setInitialAdvantages = () => {
     if (advantagesState.length) {
       for (let i = 1; i <= advantagesState.length; i++ ) {
-        initialAdvantages[`advantages-${i}`] = advantagesState[i - 1];
+        advantagesValues[`advantages-${i}`] = advantagesState[i - 1];
       }
     } else {
       for (let i = 0; i < 3; i++) {
@@ -43,9 +43,9 @@ const SecondStepForm = () => {
   setInitialAdvantages();
 
   const initialValues = {
-    ...initialAdvantages,
+    ...advantagesValues,
     checkbox: checkbox || null,
-    radio: radio || 1
+    radio: radio || "1",
   }
 
   return (
@@ -57,14 +57,21 @@ const SecondStepForm = () => {
         onSubmit={(values) => {
             const {radio, checkbox, ...advantages} = values;
             dispatch(setCheckbox(checkbox));
-            dispatch(setRadio(radio));
+            dispatch(setRadio(+radio));
             dispatch(setAdvantages(Object.values(advantages)));
             dispatch(goForward());
           }
         }
-        // enableReinitialize={true}
       >
-        {() => {
+        {({handleChange}) => {
+          const onAdvantagesChange = (e: any) => {
+            const {target} = e;
+            const {value} = target;
+            const index = +target.id.split('-')[2];
+            advantagesValues[`advantages-${index}`] = value;
+            handleChange(e);
+          }
+
           const renderAdvantages = () => {
             return advantagesState.map((advantage, i) => {
               return (
@@ -76,6 +83,7 @@ const SecondStepForm = () => {
                     type="text"
                     placeholder="Placeholder"
                     className="input input_multiple"
+                    onChange={(e: any) => onAdvantagesChange(e)}
                     required
                   />
                   <ErrorMessage  
@@ -129,7 +137,13 @@ const SecondStepForm = () => {
             })
           }
 
-
+          const addAdvantage = () => {
+            const count = advantagesState.length + 1;
+            setAdvantagesState(state => {
+              advantagesValues[`advantages-${count}`] = '';
+              return [...state, ''];
+            })
+          }
 
           return(
             <Form className='form'>
@@ -138,7 +152,7 @@ const SecondStepForm = () => {
                 {renderAdvantages()}
                 <button 
                   type="button"
-                  // onClick={addAdvantage}
+                  onClick={addAdvantage}
                   className="form__plus">
                 </button>
               </div>
