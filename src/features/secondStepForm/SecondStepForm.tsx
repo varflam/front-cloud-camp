@@ -45,7 +45,7 @@ const SecondStepForm = () => {
   const initialValues = {
     ...advantagesValues,
     checkbox: checkbox || null,
-    radio: radio || "1",
+    radio: `${radio}` || "1",
   }
 
   return (
@@ -64,7 +64,7 @@ const SecondStepForm = () => {
         }
       >
         {({handleChange}) => {
-          const onAdvantagesChange = (e: any) => {
+          const onAdvantagesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const {target} = e;
             const {value} = target;
             const index = +target.id.split('-')[2];
@@ -83,7 +83,7 @@ const SecondStepForm = () => {
                     type="text"
                     placeholder="Placeholder"
                     className="input input_multiple"
-                    onChange={(e: any) => onAdvantagesChange(e)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => onAdvantagesChange(e)}
                     required
                   />
                   <ErrorMessage  

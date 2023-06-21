@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { modals } from '../../types';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,17 @@ import './modals.scss';
 
 const Modals = (props: modals) => {
   const {isSuccessed, isVisible} = props;
+  const [isClosed, setIsClosed] = useState(false);
 
   if (!isVisible) return null;
 
-  const modal = isSuccessed ? <ModalSuccess/> : <ModalFail/>
+  const closeModal = () => {
+    setIsClosed(true);
+  }
+
+  if (isClosed) return null;
+
+  const modal = isSuccessed ? <ModalSuccess/> : <ModalFail closeModal={closeModal}/>; 
 
   return(
     <>
@@ -44,17 +51,22 @@ const ModalSuccess = () => {
   )
 }
 
-const ModalFail = () => {
+const ModalFail = ({closeModal}: {closeModal: () => void}) => {
+
   return(
     <>
       <div className="modal__info">
         <p className="modal__title">Ошибка</p>
-        <button className="modal__close"></button>
+        <button 
+          className="modal__close"
+          onClick={() => closeModal()}>
+        </button>
       </div>
       <img src={fail} alt="Fail" className="modal__img" />
       <button
         id="button-close"
-        className='button'
+        className='button button_close'
+        onClick={() => closeModal()}
         >
           Закрыть
       </button>

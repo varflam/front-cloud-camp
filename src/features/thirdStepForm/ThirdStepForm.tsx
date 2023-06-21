@@ -38,6 +38,7 @@ const ThirdStepForm = () => {
               setIsVisible(true);
               if (res.data.status === 'success') {
                 setIsSuccessed(true);
+                console.log(res);
               }
             });
         }}
@@ -46,7 +47,8 @@ const ThirdStepForm = () => {
             ({handleChange}) => {
               const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 handleChange(e);
-                setSymbolCounter(e.target.value.length);
+                const valueWithoutSpaces = e.target.value.split('').filter(char => char !== ' ');
+                setSymbolCounter(valueWithoutSpaces.length);
               }
 
               return(

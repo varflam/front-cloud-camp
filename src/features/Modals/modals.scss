@@ -21,6 +21,12 @@
     background: #FFFFFF;
     margin: auto;
     transform: translateY(calc(50vh - 156px));
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
   
     &__title {
       font-family: 'SB Sans Interface';
@@ -30,6 +36,21 @@
       line-height: 26px;
       text-align: center;
       color: #333333;
+      margin: 0;
+    }
+
+    &__close {
+      background: url('../../assets/close_icon.svg') no-repeat center center,
+                rgba(0, 0, 0, 0.04);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 100px;
+      padding: 4px;
+      transition: .3s;
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   
     &__img {
@@ -41,6 +62,9 @@
       width: auto;
       &__link {
         color: $button-color;
+      }
+      &_close {
+        align-self: self-end;
       }
     }
   }
