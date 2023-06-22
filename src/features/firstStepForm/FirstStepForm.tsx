@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { firstStepForm, gender } from '../../types';
+import { IFirstStepForm, gender } from '../../types';
 import { setName, setSex, setSurname, setNickname } from '../../app/formSlice';
 import { goForward } from '../../app/stepSlice';
 import ProgressBar from '../progressBar/ProgressBar';
@@ -13,7 +13,7 @@ import '../../style/form.scss';
 const FirstStepForm = () => {
   const dispatch = useAppDispatch();
   const {name, nickname, sex, surname} = useAppSelector(state => state.formSlice);
-  const initial: firstStepForm = {
+  const initial: IFirstStepForm = {
     name: name || '',
     surname: surname || '',
     sex: sex || 'man',
@@ -22,7 +22,7 @@ const FirstStepForm = () => {
 
   const nicknameRegEx = /^[а-яА-Яa-zA-Z0-9]*$/;
   const nameRegEx = /^[а-яА-Яa-zA-Z]*$/;
-  const schema: yup.ObjectSchema<firstStepForm> = yup.object({
+  const schema: yup.ObjectSchema<IFirstStepForm> = yup.object({
     nickname: yup
                 .string()
                 .defined()
@@ -47,7 +47,7 @@ const FirstStepForm = () => {
       <Formik
         initialValues={initial}
         validationSchema={schema}
-        onSubmit={(values: firstStepForm) => {
+        onSubmit={(values: IFirstStepForm) => {
           const {name, nickname, sex, surname} = values;
           dispatch(setName(name));
           dispatch(setNickname(nickname));

@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import ProgressBar from '../progressBar/ProgressBar';
-import { thirdStepForm } from '../../types';
+import { IThirdStepForm } from '../../types';
 import { setAbout } from '../../app/formSlice';
 import { useSubmitForm } from '../../hooks/useSubmitForm';
 import Buttons from '../Buttons/Buttons';
@@ -17,11 +17,11 @@ const ThirdStepForm = () => {
   const {about} = useAppSelector(state => state.formSlice);
   const {onSubmitForm} = useSubmitForm();
 
-  const initialValues: thirdStepForm = {
+  const initialValues: IThirdStepForm = {
     about: about || '',
   }
 
-  const validationSchema: yup.ObjectSchema<thirdStepForm> = yup.object({
+  const validationSchema: yup.ObjectSchema<IThirdStepForm> = yup.object({
     about: yup.string().defined('Please, write about yourself').max(200, 'This is too long'),
   })
 
@@ -31,14 +31,13 @@ const ThirdStepForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={({about}) => {
+        onSubmit={({about}: IThirdStepForm) => {
           dispatch(setAbout(about));
           onSubmitForm()
             .then((res: any) => {
               setIsVisible(true);
               if (res.data.status === 'success') {
                 setIsSuccessed(true);
-                console.log(res);
               }
             });
         }}

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { StartForm } from '../features/startForm/StartForm';
+import { StartForm } from '../../features/startForm/StartForm';
 
-import src from '../assets/folder.svg';
+import src from '../../assets/folder.svg';
 
 import './startPage.scss';
 

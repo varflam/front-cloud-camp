@@ -44,6 +44,9 @@
     &__error {
       margin-top: -15px;
       color: darken(red, 10%);
+      &_array {
+        margin: 0;
+      }
     }
     &__tip {
       font-family: 'SB Sans Interface';
@@ -64,6 +67,7 @@
 
   &__item {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0 10px;
     &_adv {

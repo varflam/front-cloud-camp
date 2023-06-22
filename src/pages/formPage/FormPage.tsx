@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAppSelector } from '../app/hooks';
-import FirstStepForm from '../features/firstStepForm/FirstStepForm';
-import SecondStepForm from '../features/secondStepForm/SecondStepForm';
-import ThirdStepForm from '../features/thirdStepForm/ThirdStepForm';
+import { useAppSelector } from '../../app/hooks';
+import FirstStepForm from '../../features/firstStepForm/FirstStepForm';
+import SecondStepForm from '../../features/secondStepForm/SecondStepForm';
+import ThirdStepForm from '../../features/thirdStepForm/ThirdStepForm';
 
 import './formPage.scss';
 

@@ -3,7 +3,7 @@
  import * as yup from 'yup';
  import MaskedInput from "react-text-mask";
  import { useNavigate } from 'react-router-dom';
- import { startForm } from '../../types';
+ import { IStartForm } from '../../types';
  import { useAppDispatch, useAppSelector } from '../../app/hooks';
  import { setEmail, setPhone } from '../../app/formSlice';
 
@@ -37,12 +37,12 @@ export const StartForm = (): JSX.Element => {
 
   const emailRegEx = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-  const schema: yup.ObjectSchema<startForm> = yup.object({
+  const schema: yup.ObjectSchema<IStartForm> = yup.object({
     phone: yup.string().defined(),
     email: yup.string().defined().matches(emailRegEx, 'Please enter a valid email'),
   });
 
-  const initial: startForm = {
+  const initial: IStartForm = {
     phone: phone || '',
     email: email || '',
   }
@@ -52,7 +52,7 @@ export const StartForm = (): JSX.Element => {
      <Formik 
       initialValues={initial}
       validationSchema={schema}
-      onSubmit={(value: startForm) => {
+      onSubmit={(value: IStartForm) => {
         const {email, phone} = value;
         dispatch(setEmail(email));
         dispatch(setPhone(phone));

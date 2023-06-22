@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useAppDispatch } from '../../app/hooks';
-import { modals } from '../../types';
+import { IModals } from '../../types';
 import { Link } from 'react-router-dom';
 import { startAgain } from '../../app/stepSlice';
 
@@ -9,7 +9,7 @@ import fail from '../../assets/cross_icon.svg';
 
 import './modals.scss';
 
-const Modals = (props: modals) => {
+const Modals = (props: IModals) => {
   const {isSuccessed, isVisible} = props;
   const [isClosed, setIsClosed] = useState(false);
 

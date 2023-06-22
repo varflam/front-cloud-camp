@@ -6,21 +6,23 @@ import { goForward } from '../../app/stepSlice';
 import ProgressBar from '../progressBar/ProgressBar';
 import Buttons from '../Buttons/Buttons';
 import { setAdvantages, setCheckbox, setRadio } from '../../app/formSlice';
+import { ISecondStepForm } from '../../types';
 
 
 const SecondStepForm = () => {
   const dispatch = useAppDispatch();
   const {advantages, radio, checkbox} = useAppSelector(state => state.formSlice);
 
-  const schema = yup.object({
-    checkbox: yup.array().min(1, 'Please, choose a checkbox'),
-    radio: yup.string().required('Please, choose a radio').matches(/[123]/),
+  const schema: yup.ObjectSchema<ISecondStepForm> = yup.object({
+    advantages: yup.array().required('Please, type at least one advantage').of(yup.string().required('Please, fill an advantage')),
+    checkbox: yup.array().required().min(1, 'Please, choose a checkbox'),
+    radio: yup.string().required('Please, choose a radio').matches(/[123]/, 'Please, choose a number'),
   });
 
   const checkboxesID: string[] = ['field-checkbox-group-option-1', 'field-checkbox-group-option-2', 'field-checkbox-group-option-3'];
   const radiosID: string[] = ['field-radio-group-option-1', 'field-radio-group-option-2', 'field-radio-group-option-3'];
 
-  const initialValues = {
+  const initialValues: ISecondStepForm = {
     advantages,
     checkbox: checkbox || null,
     radio: `${radio}` || "1",
@@ -32,13 +34,15 @@ const SecondStepForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
-        onSubmit={(values) => {
+        onSubmit={(values: ISecondStepForm) => {
             const {radio, checkbox, advantages} = values;
             console.log(advantages);
             dispatch(setCheckbox(checkbox));
-            dispatch(setRadio(+radio));
             dispatch(setAdvantages(advantages));
             dispatch(goForward());
+            if (radio) {
+              dispatch(setRadio(+radio));
+            }
           }
         }
       >
@@ -97,12 +101,6 @@ const SecondStepForm = () => {
                               type="text"
                               placeholder="Placeholder"
                               className="input input_multiple"
-                              required
-                            />
-                            <ErrorMessage  
-                                    name={`advantages-${i + 1}`}
-                                    className="input__error"
-                                    component="p"
                             />
                             <button 
                               type="button"
@@ -111,6 +109,11 @@ const SecondStepForm = () => {
                               onClick={() => arrayHelpers.remove(i)}
                             >
                             </button>
+                            <ErrorMessage  
+                                    name={`advantages.${i}`}
+                                    className="input__error input__error_array"
+                                    component="p"
+                            />
                           </div>
                         ) 
                       })
@@ -120,7 +123,7 @@ const SecondStepForm = () => {
                         {inputs}
                         <button 
                           type="button"
-                          onClick={() => arrayHelpers.insert(advantages.length, '')}
+                          onClick={() => arrayHelpers.push('')}
                           className="form__plus">
                         </button>
                         </>

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { sliceState, gender } from '../types';
+import { ISliceState, gender } from '../types';
 
 
 
-const initialState: sliceState = {
+const initialState: ISliceState = {
   nickname: null,
   name: null,
   surname: null,
@@ -44,7 +44,7 @@ const formSlice = createSlice({
     setRadio: (state, action: PayloadAction<number | null>) => {
       state.radio = action.payload;
     },
-    setCheckbox: (state, action: PayloadAction<number[]>) => {
+    setCheckbox: (state, action: PayloadAction<number[] | null>) => {
       state.checkbox = action.payload;
     },
     setAbout: (state, action: PayloadAction<string | null>) => {

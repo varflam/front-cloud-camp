@@ -1,27 +1,28 @@
-export interface startForm {
+export interface IStartForm {
   phone: string | null;
   email: string | null;
 }
 
 export type gender = "man" | "woman";
 
-export interface firstStepForm {
+export interface IFirstStepForm {
   nickname: string | null;
   name: string | null;
   surname: string | null;
   sex: gender | '';
 }
 
-export interface secondStepForm {
-  radio: number | null;
+export interface ISecondStepForm {
+  advantages: string[];
+  radio: string | null;
   checkbox: number[] | null;
 }
 
-export interface thirdStepForm {
+export interface IThirdStepForm {
   about: string;
 }
 
-export interface sliceState {
+export interface ISliceState {
   nickname: string | null;
   name: string | null;
   surname: string | null;
@@ -30,7 +31,7 @@ export interface sliceState {
   sex: gender | '';
   advantages: string[];
   radio: number | null;
-  checkbox: number[];
+  checkbox: number[] | null;
   about: string | null;
 }
 
@@ -38,7 +39,7 @@ export type steps = {
   step: number;
 };
 
-export interface modals {
+export interface IModals {
   isVisible: boolean;
   isSuccessed: boolean;
 }
