@@ -10,7 +10,7 @@ const initialState: sliceState = {
   phone: null,
   email: null,
   sex: '',
-  advantages: [],
+  advantages: ['', '', ''],
   radio: null,
   checkbox: [],
   about: null,

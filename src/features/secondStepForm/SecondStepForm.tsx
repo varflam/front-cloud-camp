@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import * as yup from 'yup';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { goForward } from '../../app/stepSlice';
@@ -12,7 +11,6 @@ import { setAdvantages, setCheckbox, setRadio } from '../../app/formSlice';
 const SecondStepForm = () => {
   const dispatch = useAppDispatch();
   const {advantages, radio, checkbox} = useAppSelector(state => state.formSlice);
-  const [advantagesState, setAdvantagesState] = useState([...advantages]);
 
   const schema = yup.object({
     checkbox: yup.array().min(1, 'Please, choose a checkbox'),
@@ -22,28 +20,8 @@ const SecondStepForm = () => {
   const checkboxesID: string[] = ['field-checkbox-group-option-1', 'field-checkbox-group-option-2', 'field-checkbox-group-option-3'];
   const radiosID: string[] = ['field-radio-group-option-1', 'field-radio-group-option-2', 'field-radio-group-option-3'];
 
-  const advantagesValues: {[index: string]: string} = {
-    'advantages-1': '',
-    'advantages-2': '',
-    'advantages-3': '',
-  };
-
-  const setInitialAdvantages = () => {
-    if (advantagesState.length) {
-      for (let i = 1; i <= advantagesState.length; i++ ) {
-        advantagesValues[`advantages-${i}`] = advantagesState[i - 1];
-      }
-    } else {
-      for (let i = 0; i < 3; i++) {
-        setAdvantagesState(state => [...state, '']);
-      }
-    }
-  }
-
-  setInitialAdvantages();
-
   const initialValues = {
-    ...advantagesValues,
+    advantages,
     checkbox: checkbox || null,
     radio: `${radio}` || "1",
   }
@@ -55,53 +33,16 @@ const SecondStepForm = () => {
         initialValues={initialValues}
         validationSchema={schema}
         onSubmit={(values) => {
-            const {radio, checkbox, ...advantages} = values;
+            const {radio, checkbox, advantages} = values;
+            console.log(advantages);
             dispatch(setCheckbox(checkbox));
             dispatch(setRadio(+radio));
-            dispatch(setAdvantages(Object.values(advantages)));
+            dispatch(setAdvantages(advantages));
             dispatch(goForward());
           }
         }
       >
-        {({handleChange}) => {
-          const onAdvantagesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            const {target} = e;
-            const {value} = target;
-            const index = +target.id.split('-')[2];
-            advantagesValues[`advantages-${index}`] = value;
-            handleChange(e);
-          }
-
-          const renderAdvantages = () => {
-            return advantagesState.map((advantage, i) => {
-              return (
-                <div className="form__item form__item_adv" key={`form__item_adv-${i}`}>
-                  <Field 
-                    key={`field-advantages-${i + 1}`}
-                    name={`advantages-${i + 1}`}
-                    id={`field-advantages-${i + 1}`}
-                    type="text"
-                    placeholder="Placeholder"
-                    className="input input_multiple"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => onAdvantagesChange(e)}
-                    required
-                  />
-                  <ErrorMessage  
-                          name={`advantages-${i + 1}`}
-                          className="input__error"
-                          component="p"
-                  />
-                  <button 
-                    type="button"
-                    className="form__delete-img"
-                    id={`button-remove-${i + 1}`}
-                  >
-                  </button>
-                </div>
-              )
-            })
-          }
-
+        {({values}) => {
           const createCheckboxes = () => {
             return checkboxesID.map(checkboxID => {
               return(
@@ -137,24 +78,56 @@ const SecondStepForm = () => {
             })
           }
 
-          const addAdvantage = () => {
-            const count = advantagesState.length + 1;
-            setAdvantagesState(state => {
-              advantagesValues[`advantages-${count}`] = '';
-              return [...state, ''];
-            })
-          }
-
           return(
             <Form className='form'>
               <label className="label">Advantages</label>
               <div className="form__group">
-                {renderAdvantages()}
-                <button 
-                  type="button"
-                  onClick={addAdvantage}
-                  className="form__plus">
-                </button>
+                <FieldArray
+                  name="advantages"
+                >
+                  {
+                    (arrayHelpers) => {
+                      const inputs = values.advantages.map((advantage, i) => {
+                        return(
+                          <div className="form__item form__item_adv" key={`form__item_adv-${i}`}>
+                            <Field 
+                              key={`field-advantages-${i + 1}`}
+                              name={`advantages.${i}`}
+                              id={`field-advantages-${i + 1}`}
+                              type="text"
+                              placeholder="Placeholder"
+                              className="input input_multiple"
+                              required
+                            />
+                            <ErrorMessage  
+                                    name={`advantages-${i + 1}`}
+                                    className="input__error"
+                                    component="p"
+                            />
+                            <button 
+                              type="button"
+                              className="form__delete-img"
+                              id={`button-remove-${i + 1}`}
+                              onClick={() => arrayHelpers.remove(i)}
+                            >
+                            </button>
+                          </div>
+                        ) 
+                      })
+
+                      return(
+                        <>
+                        {inputs}
+                        <button 
+                          type="button"
+                          onClick={() => arrayHelpers.insert(advantages.length, '')}
+                          className="form__plus">
+                        </button>
+                        </>
+                      )
+                    }
+                  }
+                </FieldArray>
               </div>
               <p className="label">Checkbox group</p>
               <div className="form__group">
